@@ -1,6 +1,6 @@
-﻿CREATE TABLE [dbo].[User]
+﻿CREATE TABLE [MINIMAL_API_DEMO].[User]
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [FirstName] NCHAR(50) NOT NULL, 
-    [LastName] NCHAR(50) NULL
+    [LastName] NCHAR(50) NOT NULL
 )
