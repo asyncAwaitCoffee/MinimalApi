@@ -1,3 +1,4 @@
+using DataAccess.DbAccess;
 
 namespace MinimalAPIDemo
 {
@@ -13,8 +14,11 @@ namespace MinimalAPIDemo
 			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
+			builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
+			builder.Services.AddSingleton<IUserData, UserData>();
 
 			var app = builder.Build();
+			app.ConfigureApi();
 
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())
@@ -26,26 +30,6 @@ namespace MinimalAPIDemo
 			app.UseHttpsRedirection();
 
 			app.UseAuthorization();
-
-			var summaries = new[]
-			{
-				"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-			};
-
-			app.MapGet("/weatherforecast", (HttpContext httpContext) =>
-			{
-				var forecast = Enumerable.Range(1, 5).Select(index =>
-					new WeatherForecast
-					{
-						Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-						TemperatureC = Random.Shared.Next(-20, 55),
-						Summary = summaries[Random.Shared.Next(summaries.Length)]
-					})
-					.ToArray();
-				return forecast;
-			})
-			.WithName("GetWeatherForecast")
-			.WithOpenApi();
 
 			app.Run();
 		}

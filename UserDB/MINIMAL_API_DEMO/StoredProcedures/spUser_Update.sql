@@ -5,6 +5,6 @@
 AS begin
 	update MINIMAL_API_DEMO.[User]
 	set FirstName = @FirstName,
-		LastName = LastName
+		LastName = @LastName
 	where Id = @Id
 end
