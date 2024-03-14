@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [MINIMAL_API_DEMO].[User]
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [FirstName] NCHAR(50) NOT NULL, 
-    [LastName] NCHAR(50) NOT NULL
+    [FirstName] NVARCHAR(25) NOT NULL, 
+    [LastName] NVARCHAR(25) NOT NULL
 )

@@ -21,6 +21,9 @@ public class UserData : IUserData
 			new { Id = id }
 			);
 
+		Console.WriteLine(results.FirstOrDefault()?.FirstName.Length);
+		Console.WriteLine(results.FirstOrDefault()?.LastName.Length);
+
 		return results.FirstOrDefault();
 	}
 

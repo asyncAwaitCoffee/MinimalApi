@@ -1,1 +1,1 @@
-# MinimalApi
+# Minimal API Demo App
